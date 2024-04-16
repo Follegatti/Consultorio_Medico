@@ -1,8 +1,8 @@
 package com.mitocode.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,15 +13,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Role {
+@IdClass(ConsultExamPK.class)
+public class ConsultExam {
 
     @Id
-    @EqualsAndHashCode.Include
-    private Integer idRole;
+    private Consult consult;
 
-    @Column(nullable = false, length = 50)
-    private String name;
+    @Id
+    private Exam exam;
 
-    @Column(nullable = false, length = 100)
-    private String description;
 }

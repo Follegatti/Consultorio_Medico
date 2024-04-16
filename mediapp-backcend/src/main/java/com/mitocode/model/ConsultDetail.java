@@ -11,22 +11,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Medic {
+public class ConsultDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    private Integer idMedic;
+    private Integer idDetail;
+
+    @ManyToOne//FK
+    @JoinColumn(name = "id_consult", nullable = false, foreignKey = @ForeignKey(name = "FK_DETAIL_CONSULT"))
+    private Consult consult;
 
     @Column(nullable = false, length = 70)
-    private String firstName;
+    private String diagnosis;
 
-    @Column(nullable = false, length = 70)
-    private String lastName;
-
-    @Column(nullable = false, length = 12)
-    private String cmp;
-
-    @Column(length = 255)
-    private String photoUrl;
+    @Column(nullable = false, length = 300)
+    private String treatment;
 }
