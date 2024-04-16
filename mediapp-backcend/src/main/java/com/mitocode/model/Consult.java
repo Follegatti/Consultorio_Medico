@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,4 +32,6 @@ public class Consult {
     private String numConsult;
     @Column(nullable = false)
     private LocalDateTime consultDate;
+    @OneToMany(mappedBy = "consult",cascade = {CascadeType.ALL}, orphanRemoval = true)
+    private List<ConsultDetail> details;
 }
