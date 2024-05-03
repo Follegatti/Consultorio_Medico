@@ -6,15 +6,19 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Data
+
+
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class ConsultDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Integer idDetail;
 
     @ManyToOne//FK
@@ -26,4 +30,5 @@ public class ConsultDetail {
 
     @Column(nullable = false, length = 300)
     private String treatment;
+
 }
